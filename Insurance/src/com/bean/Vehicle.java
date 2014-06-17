@@ -1,5 +1,10 @@
 package com.bean;
 
+/**
+ * The pojo for vehicles
+ * @author Benjamin Lin
+ *
+ */
 public class Vehicle {
 	
 	private String vin, make, model, type, picture;

@@ -1,5 +1,11 @@
 package com.bean;
 
+/**
+ * The pojo for customers
+ * @author Benjamin Lin
+ * 
+ */
+
 public class Customer {
 	
 	private int id;

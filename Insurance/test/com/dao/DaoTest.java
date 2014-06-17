@@ -10,15 +10,15 @@ import java.sql.Statement;
  *
  */
 public class DaoTest {
-	
+
 	public static void main(String [] args) {
 		// Set up connection
 		Dao dao = new Dao();
-		
+
 		// Test Data
 		String username = "Jon";
 		String password = "3333";
-		
+
 		try {
 			Statement st = dao.getConnection().createStatement();
 			int val = st.executeUpdate
@@ -29,7 +29,7 @@ public class DaoTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 }
