@@ -14,9 +14,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/taglibs-standard-jstlel-1.2.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/taglibs-standard-impl-1.2.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/taglibs-standard-compat-1.2.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/taglibs-standard-spec-1.2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

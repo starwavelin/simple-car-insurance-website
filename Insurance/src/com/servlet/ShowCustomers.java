@@ -40,11 +40,11 @@ public class ShowCustomers extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 		if (request.getParameter("action").equals("show")) {
 			List<Customer> customers = dao.getAllCustomers();
 			session.setAttribute("customerList", customers);
-			request.getRequestDispatcher("home.jsp").forward(request, response);
+			response.sendRedirect("home.jsp");
 		}
 	}
 
