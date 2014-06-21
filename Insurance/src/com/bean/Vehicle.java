@@ -1,11 +1,13 @@
 package com.bean;
 
+import java.io.Serializable;
+
 /**
  * The pojo for vehicles
  * @author Benjamin Lin
  *
  */
-public class Vehicle {
+public class Vehicle implements Serializable {
 	
 	private String vin, make, model, type, picture;
 	private int year, cusid;	// cusid is the one associated with customerID

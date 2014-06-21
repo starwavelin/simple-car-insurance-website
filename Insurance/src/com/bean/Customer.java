@@ -1,12 +1,14 @@
 package com.bean;
 
+import java.io.Serializable;
+
 /**
  * The pojo for customers
  * @author Benjamin Lin
  * 
  */
 
-public class Customer {
+public class Customer implements Serializable {
 	
 	private int id;
 	private String firstname, lastname, policyno, phone, email, aaa;

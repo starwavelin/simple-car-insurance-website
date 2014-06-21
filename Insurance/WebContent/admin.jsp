@@ -13,7 +13,7 @@
 <body>
 	<div align="center"> 
 		<h1>Customers</h1>
-		<form method="post" action="ShowCustomers">
+		<form name="showCustomer" method="post" action="ShowCustomers">
 		<table>
 			<tr><td>List All Customers: </td><td><input type="submit" name="action" value="show"></td></tr>	
 		</table>

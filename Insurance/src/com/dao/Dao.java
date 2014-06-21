@@ -67,11 +67,11 @@ public class Dao {
 		try {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
-			System.out.println(rs.getInt("id"));
-			if (rs.next()) {
-				id = rs.getInt("id") + 1;
-				System.out.println("new id: " + id);
+			while (rs.next()) {
+				id = rs.getInt("id");				
 			}
+			id += 1;
+			System.out.println("new id: " + id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -79,7 +79,10 @@ public class Dao {
 	}
 	
 	
-	
+	/**
+	 * Add a new customer to DB
+	 * @param cus Customer to be added to DB
+	 */
 	public static void addCustomer(Customer cus) {
 		con = ConnectionManager.getConnection();
 		if (con != null) {
@@ -92,7 +95,8 @@ public class Dao {
 				ps.setString(4, cus.getPolicyNo());
 				ps.setString(5, cus.getPhone());
 				ps.setString(6, cus.getEmail());
-				ps.setString(7, cus.getAAA());				
+				ps.setString(7, cus.getAAA());		
+				ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
