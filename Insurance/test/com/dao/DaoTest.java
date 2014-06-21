@@ -16,8 +16,8 @@ public class DaoTest {
 		Dao dao = new Dao();
 
 		// Test Data
-		String username = "Jon";
-		String password = "3333";
+		String username = "Jarim Osalu";
+		String password = "7657";
 
 		try {
 			Statement st = dao.getConnection().createStatement();
@@ -29,6 +29,8 @@ public class DaoTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		dao.getID();
 
 	}
 
