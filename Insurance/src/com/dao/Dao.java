@@ -1,7 +1,6 @@
 package com.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,44 +12,22 @@ import com.bean.Customer;
 import com.bean.Vehicle;
 
 /**
- * The DAO for #1 Connection to MySQL database #2 All the SQL statements used in
- * this project
- * 
+ * The DAO for All the SQL statements 
+ * used in this project
  * @author Benjamin Lin
+ * date: Jun 20, 2014
  * 
  */
 public class Dao {
 
-	private Connection con;
-	private final static String scheme = "insurance";
-	private final static String dbuser = "root";
-	private final static String dbpsword = "tomcat";
-
-	public Dao() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"
-					+ scheme, dbuser, dbpsword);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Get Connection
-	 * 
-	 * @return Connection con
-	 */
-	public Connection getConnection() {
-		return con;
-	}
-
+	public static Connection con;
+	
 	/**
 	 * Get All Users Customer Bean is used here
-	 * 
 	 * @throws SQLException
 	 */
-	public List<Customer> getAllCustomers() {
+	public static List<Customer> getAllCustomers() {
+		con = ConnectionManager.getConnection();		
 		List<Customer> customerList = new ArrayList<Customer>();
 		if (con != null) {
 			String sql = "select * from customer";
@@ -59,6 +36,7 @@ public class Dao {
 				ResultSet rs = st.executeQuery(sql);
 				while (rs.next()) {
 					Customer customer = new Customer();
+					
 					// There are 7 columns in the "customer" table
 					customer.setID(rs.getInt("id"));
 					customer.setFirstname(rs.getString("firstname"));
@@ -67,6 +45,7 @@ public class Dao {
 					customer.setPhone(rs.getString("phone"));
 					customer.setEmail(rs.getString("email"));
 					customer.setAAA(rs.getString("aaa"));
+					
 					// append the customerList
 					customerList.add(customer);
 				}
@@ -81,7 +60,8 @@ public class Dao {
 	 * Get next available customer ID
 	 * @return next available customer ID
 	 */
-	public int getID() {
+	public static int getID() {
+		con = ConnectionManager.getConnection();
 		int id = 0;
 		String sql = "select id from customer";
 		try {
@@ -100,12 +80,13 @@ public class Dao {
 	
 	
 	
-	public void addCustomer(Customer cus) {
+	public static void addCustomer(Customer cus) {
+		con = ConnectionManager.getConnection();
 		if (con != null) {
 			String sql = "insert into customer values (?, ?, ?, ?, ?, ?, ?)";
 			try {
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setInt(1, this.getID());
+				ps.setInt(1, getID());
 				ps.setString(2, cus.getFirstname());
 				ps.setString(3, cus.getLastname());
 				ps.setString(4, cus.getPolicyNo());
@@ -117,23 +98,28 @@ public class Dao {
 			}
 			
 		}
-		
 	}
 	
-	
-	
+	/**
+	 * Get Connection
+	 * @return Connection con
+	 */
+	public static Connection getConnection() {
+		con = ConnectionManager.getConnection();
+		return con;
+	}
 	
 	/**
 	 * Close Connection
 	 */
-	public void closeConnection() {
+	public static void closeConnection() {
 		if (con != null) {
 			try {
 				con.close();
-			} catch (SQLException e) {
+			} catch(SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-
+	
 }

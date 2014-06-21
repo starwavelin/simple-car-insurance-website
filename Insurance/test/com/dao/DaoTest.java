@@ -12,15 +12,14 @@ import java.sql.Statement;
 public class DaoTest {
 
 	public static void main(String [] args) {
-		// Set up connection
-		Dao dao = new Dao();
+		
 
 		// Test Data
-		String username = "Jarim Osalu";
-		String password = "7657";
+		String username = "Jenny";
+		String password = "7679";
 
 		try {
-			Statement st = dao.getConnection().createStatement();
+			Statement st = Dao.getConnection().createStatement();
 			int val = st.executeUpdate
 					("INSERT INTO admin (username, password) VALUES ('" + username + "','" + password + "')");
 			if (val == 1) {
@@ -30,7 +29,7 @@ public class DaoTest {
 			e.printStackTrace();
 		}
 		
-		dao.getID();
+		// Dao.getID();
 
 	}
 

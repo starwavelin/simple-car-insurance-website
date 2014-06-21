@@ -19,14 +19,12 @@ import com.dao.Dao;
 public class ShowCustomers extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-    private Dao dao;
-	
+    	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ShowCustomers() {
         super();
-        dao = new Dao();
     }
 
 	/**
@@ -42,10 +40,14 @@ public class ShowCustomers extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		if (request.getParameter("action").equals("show")) {
-			List<Customer> customers = dao.getAllCustomers();
+			List<Customer> customers = Dao.getAllCustomers();
 			session.setAttribute("customerList", customers);
 			response.sendRedirect("home.jsp");
+		} 
+		else {
+			response.sendRedirect("error.jsp");
 		}
+		
 	}
 
 }
