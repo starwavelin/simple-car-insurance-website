@@ -105,6 +105,33 @@ public class Dao {
 	}
 	
 	/**
+	 * Update a customer information except his ID
+	 * @param cus the customer to be updated
+	 */
+	public static void updateCustomer(Customer cus) {
+		con = ConnectionManager.getConnection();
+		if (con != null) {
+			String sql = "update customer " +
+					"set firstname = ?, lastname = ?, policyno = ?, phone = ?, email = ?, aaa = ?" +
+					"where id = ?";
+			try {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, cus.getFirstname());
+				ps.setString(2, cus.getLastname());
+				ps.setString(3, cus.getPolicyNo());
+				ps.setString(4, cus.getPhone());
+				ps.setString(5, cus.getEmail());
+				ps.setString(6, cus.getAAA());
+				ps.setInt(7, cus.getID());
+				ps.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	/**
 	 * Get Connection
 	 * @return Connection con
 	 */
