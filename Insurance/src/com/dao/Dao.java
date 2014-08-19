@@ -131,6 +131,37 @@ public class Dao {
 	}
 	
 	
+	public static List<Vehicle> getAllVehicles(int cusid) {
+		con = ConnectionManager.getConnection();
+		List<Vehicle> vehicleList = new ArrayList<Vehicle>();
+		if (con != null) {
+			String sql = "select * from vehicle where cusid = ?";
+			try {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setInt(1, cusid);
+				ResultSet rs = ps.executeQuery();
+				while(rs.next()) {
+					Vehicle v = new Vehicle();
+					v.setVin(rs.getString("vin"));
+					v.setMake(rs.getString("make"));
+					v.setModel(rs.getString("model"));
+					v.setType(rs.getString("type"));
+					v.setYear(rs.getInt("year"));
+					v.setPicture(rs.getString("picture"));
+					v.setAmount(rs.getDouble("amount"));
+					v.setCusid(rs.getInt("cusid"));
+					vehicleList.add(v);
+				}
+				return vehicleList;
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return vehicleList;
+	}
+	
+	
+	
 	/**
 	 * Get Connection
 	 * @return Connection con

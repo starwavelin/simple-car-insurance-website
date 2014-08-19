@@ -11,43 +11,37 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bean.Customer;
+import com.bean.Vehicle;
 import com.dao.Dao;
+
 /**
- * Servlet implementation class ShowCustomers
+ * Servlet implementation class ShowVehicles
  */
-@WebServlet("/ShowCustomers")
-public class ShowCustomers extends HttpServlet {
-	
+@WebServlet("/ShowVehicles")
+public class ShowVehicles extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ShowCustomers() {
+    
+    public ShowVehicles() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		if (request.getParameter("action").equals("show")) {
-			List<Customer> customers = Dao.getAllCustomers();
-			session.setAttribute("customerList", customers);
-			response.sendRedirect("customers.jsp");
+		int cusID = Integer.parseInt(request.getParameter("cusID"));
+		if (request.getParameter("showVehicles").equals("ShowVehicles")) {
+			List<Vehicle> vehicles = Dao.getAllVehicles(cusID);
+			session.setAttribute("vehicleList", vehicles);
+			session.setAttribute("cusid", cusID);
+			response.sendRedirect("vehicles.jsp");
 		} 
 		else {
 			response.sendRedirect("error.jsp");
 		}
-		
 	}
 
 }
