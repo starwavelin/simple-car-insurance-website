@@ -100,7 +100,6 @@ public class Dao {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 		}
 	}
 	
@@ -129,7 +128,6 @@ public class Dao {
 			}
 		}
 	}
-	
 	
 	public static List<Vehicle> getAllVehicles(int cusid) {
 		con = ConnectionManager.getConnection();
@@ -160,6 +158,50 @@ public class Dao {
 		return vehicleList;
 	}
 	
+	
+	public static void updateVehicle(Vehicle v) {
+		con = ConnectionManager.getConnection();
+		if (con != null) {
+			String sql = "update vehicle " +
+					"set make = ?, model = ?, type = ?, year = ?, picture = ?, amount = ? " +
+					"where vin = ?";
+			try {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, v.getMake());
+				ps.setString(2, v.getModel());
+				ps.setString(3, v.getType());
+				ps.setInt(4, v.getYear());
+				ps.setString(5, v.getPicture());
+				ps.setDouble(6, v.getAmount());
+				ps.setString(7, v.getVin());				
+				ps.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public static void insertVehicle(Vehicle v) {
+		con = ConnectionManager.getConnection();
+		if (con != null) {
+			String sql = "insert into vehicle values (?, ?, ?, ?, ?, ?, ?, ?)";
+			try {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, v.getVin());
+				ps.setString(2, v.getMake());
+				ps.setString(3, v.getModel());
+				ps.setString(4, v.getType());
+				ps.setInt(5, v.getYear());
+				ps.setString(6,  v.getPicture());
+				ps.setDouble(7, v.getAmount());
+				ps.setInt(8, v.getCusid());
+				ps.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}
+	}
 	
 	
 	/**
