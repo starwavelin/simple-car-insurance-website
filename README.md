@@ -29,5 +29,5 @@ Functions:
   1. List/Table view of all customers
   2. Add New Customer
   3. Edit Customer Details
-  4. Addd new vehicle for a customer
+  4. Add new vehicle for a customer
   5. Edit vehilce information
