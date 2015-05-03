@@ -18,9 +18,9 @@
 --
 -- Database structure for table `insurance`
 --
-DROP DATABASE IF EXISTS `insurance`;
-CREATE DATABASE `insurance`;
+CREATE DATABASE  IF NOT EXISTS `insurance`;
 USE `insurance`;
+
 --
 -- Table structure for table `admin`
 --
