@@ -51,7 +51,7 @@ public class AddCustomer extends HttpServlet {
 			
 			List<Customer> customers = Dao.getAllCustomers();
 			session.setAttribute("customerList", customers);
-			response.sendRedirect("customerHome.jsp");
+			response.sendRedirect("customers.jsp");
 		}
 		else {
 			response.sendRedirect("error.jsp");

@@ -51,7 +51,14 @@ public class Dao {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-			} 
+			} finally {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return customerList;
 	}
@@ -59,6 +66,7 @@ public class Dao {
 	/**
 	 * Get next available customer ID
 	 * @return next available customer ID
+	 * @throws SQLException 
 	 */
 	public static int getID() {
 		con = ConnectionManager.getConnection();
@@ -74,6 +82,13 @@ public class Dao {
 			System.out.println("new id: " + id);
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return id;
 	}
@@ -82,6 +97,7 @@ public class Dao {
 	/**
 	 * Add a new customer to DB
 	 * @param cus Customer to be added to DB
+	 * @throws SQLException 
 	 */
 	public static void addCustomer(Customer cus) {
 		con = ConnectionManager.getConnection();
@@ -99,6 +115,13 @@ public class Dao {
 				ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -106,6 +129,7 @@ public class Dao {
 	/**
 	 * Update a customer information except his ID
 	 * @param cus the customer to be updated
+	 * @throws SQLException 
 	 */
 	public static void updateCustomer(Customer cus) {
 		con = ConnectionManager.getConnection();
@@ -125,6 +149,13 @@ public class Dao {
 				ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -153,6 +184,13 @@ public class Dao {
 				return vehicleList;
 			} catch(Exception e) {
 				e.printStackTrace();
+			} finally {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		return vehicleList;
@@ -177,6 +215,13 @@ public class Dao {
 				ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -199,31 +244,14 @@ public class Dao {
 				ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
-			} 
-		}
-	}
-	
-	
-	/**
-	 * Get Connection
-	 * @return Connection con
-	 */
-	public static Connection getConnection() {
-		con = ConnectionManager.getConnection();
-		return con;
-	}
-	
-	/**
-	 * Close Connection
-	 */
-	public static void closeConnection() {
-		if (con != null) {
-			try {
-				con.close();
-			} catch(SQLException e) {
-				e.printStackTrace();
+			} finally {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
-	
 }

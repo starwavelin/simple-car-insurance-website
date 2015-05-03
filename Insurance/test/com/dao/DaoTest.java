@@ -15,11 +15,11 @@ public class DaoTest {
 		
 
 		// Test Data
-		String username = "Jenny";
-		String password = "7679";
+		String username = "Benny";
+		String password = "1234";
 
 		try {
-			Statement st = Dao.getConnection().createStatement();
+			Statement st = ConnectionManager.getConnection().createStatement();
 			int val = st.executeUpdate
 					("INSERT INTO admin (username, password) VALUES ('" + username + "','" + password + "')");
 			if (val == 1) {

@@ -52,7 +52,7 @@ public class EditCustomer extends HttpServlet {
 			Dao.updateCustomer(customer);
 			List<Customer> customers = Dao.getAllCustomers();
 			session.setAttribute("customerList", customers);
-			response.sendRedirect("customerHome.jsp");
+			response.sendRedirect("customers.jsp");
 		}
 	}
 
