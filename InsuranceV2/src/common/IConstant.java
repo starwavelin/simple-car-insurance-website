@@ -8,6 +8,4 @@ public interface IConstant {
 	String DB_USER = "root";	// Use your own DB user
 	String DB_PWD = "123123"; 	// Use your own DB user's password	
 	
-	//Site URLs
-	
 }
