@@ -1,0 +1,25 @@
+/* SQL statements used in this project, primarily located in Dao class */
+
+insert into admin (username, password) values (?, ?)
+
+select * from admin where username = ? and password = ?
+
+select * from customer
+
+insert into customer (id, firstname, lastname, policyno, phone, email, aaa) values (default, ?, ?, ?, ?, ?, ?)
+
+update customer set firstname = ?, lastname = ?, policyno = ?, phone = ?, email = ?, aaa = ? where id = ?
+
+delete from customer where id = ?
+
+select * from vehicle
+
+select * from vehicle where cusid = ?
+
+insert into vehicle (vin, make, model, type, year, picture, amount, cusid) values (?, ?, ?, ?, ?, ?, ?, ?)
+
+update vehicle set make = ?, model = ?, type = ?, year = ?, picture = ?, amount = ? values (?, ?, ?, ?, ?, ?)
+
+delete from vehicle where vin = ?
+
+delete from vehicle where cusid = ?
