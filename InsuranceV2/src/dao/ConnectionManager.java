@@ -8,14 +8,14 @@ import common.IConstant;
 public class ConnectionManager {
 	
 	public static Connection getConnection() {
-		Connection con = null;
+		Connection conn = null;
 		try {
 			Class.forName(IConstant.DB_DRIVER);
-			con = DriverManager.getConnection(IConstant.DB_URL, IConstant.DB_USER, IConstant.DB_PWD);
+			conn = DriverManager.getConnection(IConstant.DB_URL, IConstant.DB_USER, IConstant.DB_PWD);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return con;
+		return conn;
 	}
 	
 }
