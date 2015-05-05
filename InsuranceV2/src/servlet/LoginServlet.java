@@ -1,11 +1,16 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import bean.User;
+import dao.Dao;
 
 /**
  * Servlet implementation class LoginServlet
@@ -13,27 +18,34 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    	super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		try {
+			
+			
+			User user = new User();
+			user.setUsername(request.getParameter("username"));
+			user.setPassword(request.getParameter("password"));
+			
+			user = Dao.login(user);
+			if (user.isValid()) {
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
+				response.sendRedirect("admin.jsp?username=" + user.getUsername());
+			} else {
+				response.sendRedirect("errorLogin.jsp");
+			}
+		} catch (Exception e) {
+			System.out.println("Error is " + e);
+		}
 	}
 
 }

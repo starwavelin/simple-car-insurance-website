@@ -1,18 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="UTF-8">
 <title>Ben's Car Insurance Site | Login Page</title>
+<link href="css/bootstrap/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-	<div align="center">
+	<div class="jumbotron">
+		<div class="container">
+		<h3>Ben's Car Insurance Site | Login Page</h3>
 		<form id="loginForm" method="post" action="LoginServlet">
-			Username: <input type="text" id="username" name="username" />
+			User name: <input type="text" id="username" name="username" />
 			Password: <input type="text" id="password" name="password" />
 			<input type="submit" name="btn" value="Login" />
 		</form>
+		</div>
 	</div>
 </body>
 </html>
