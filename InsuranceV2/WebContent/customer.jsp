@@ -95,7 +95,7 @@
 					<td><input type="text" name="make"></td>
 					<td><input type="text" name="model"></td>
 					<td><input type="text" name="type"></td>
-					<td><input type="text" name="yaer"></td>
+					<td><input type="text" name="year"></td>
 					<td><input type="text" name="picture"></td>
 					<td><input type="text" name="amount"></td>
 					<td><input type="submit" name="btn" value="Add"></td>
@@ -123,7 +123,7 @@
 					<td><input type="text" name="make_ed"></td>
 					<td><input type="text" name="model_ed"></td>
 					<td><input type="text" name="type_ed"></td>
-					<td><input type="text" name="yaer_ed"></td>
+					<td><input type="text" name="year_ed"></td>
 					<td><input type="text" name="picture_ed"></td>
 					<td><input type="text" name="amount_ed"></td>
 					<td><input type="submit" name="btn" value="Edit"></td>

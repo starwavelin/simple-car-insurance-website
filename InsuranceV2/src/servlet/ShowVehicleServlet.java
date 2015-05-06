@@ -35,7 +35,7 @@ public class ShowVehicleServlet extends HttpServlet {
 		Customer cus = Dao.getCustomerByID(id);
 		session.setAttribute("cus", cus);
 		
-		List<Vehicle> vlist = Dao.getVehicleByCusid(id);
+		List<Vehicle> vlist = Dao.getVehicleListByCusid(id);
 		session.setAttribute("vlist", vlist);
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer.jsp");

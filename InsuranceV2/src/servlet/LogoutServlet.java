@@ -32,8 +32,8 @@ public class LogoutServlet extends HttpServlet {
 		session.removeAttribute("user");
 		
 		session.removeAttribute("clist");
-		//session.removeAttribute("cus");
-		//session.removeAttribute("vlist");
+		session.removeAttribute("cus");
+		session.removeAttribute("vlist");
 		
 		session.invalidate();
 		response.sendRedirect(request.getContextPath() + "/index.jsp");

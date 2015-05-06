@@ -1,0 +1,81 @@
+package servlet;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import bean.Customer;
+import bean.Vehicle;
+import dao.Dao;
+
+
+@WebServlet("/UpdateVehicleServlet")
+public class UpdateVehicleServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public UpdateVehicleServlet() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Customer cus = (Customer) session.getAttribute("cus");
+		int cusid = cus.getID();
+		
+		if (request.getParameter("btn").equals("Add")) {
+			Vehicle v = new Vehicle();
+			v.setVin(request.getParameter("vin"));
+			v.setMake(request.getParameter("make"));
+			v.setModel(request.getParameter("model"));
+			v.setType(request.getParameter("type"));
+			v.setYear(Integer.parseInt(request.getParameter("year")));
+			v.setPicture(request.getParameter("picture"));
+			v.setAmount(Double.parseDouble(request.getParameter("amount")));
+			v.setCusid(cusid);
+			boolean inserted = Dao.insertVehicle(v, cusid);
+			List<Vehicle> vlist = Dao.getVehicleListByCusid(cusid);
+			session.setAttribute("vlist", vlist);
+			//response.sendRedirect("customer.jsp" + "?inserted=" + inserted); // Debug Use
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer.jsp");
+			requestDispatcher.forward(request, response);
+		} else if (request.getParameter("btn").equals("Edit")) {
+			Vehicle v = new Vehicle();
+			v.setVin(request.getParameter("vin_ed"));
+			v.setMake(request.getParameter("make_ed"));
+			v.setModel(request.getParameter("model_ed"));
+			v.setType(request.getParameter("type_ed"));
+			v.setYear(Integer.parseInt(request.getParameter("year_ed")));
+			v.setPicture(request.getParameter("picture_ed"));
+			v.setAmount(Double.parseDouble(request.getParameter("amount_ed")));
+			v.setCusid(cusid);
+			boolean edited = Dao.editVehicle(v);
+			List<Vehicle> vlist = Dao.getVehicleListByCusid(cusid);
+			session.setAttribute("vlist", vlist);
+			//response.sendRedirect("customer.jsp" + "?edited=" + edited);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer.jsp");
+			requestDispatcher.forward(request, response);
+		} else if (request.getParameter("btn").equals("Delete")) {
+			String vin = request.getParameter("vin_del");
+			boolean deleted = Dao.deleteVehicleByVin(vin);
+			List<Vehicle> vlist = Dao.getVehicleListByCusid(cusid);
+			session.setAttribute("vlist", vlist);
+			//response.sendRedirect("customer.jsp" + "?deleted=" + deleted);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer.jsp");
+			requestDispatcher.forward(request, response);
+		} else {
+			response.sendRedirect("error.jsp");
+		}
+	}
+
+}

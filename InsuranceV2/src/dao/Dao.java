@@ -74,7 +74,7 @@ public class Dao {
 			String sql = "select * from customer where id = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
-			System.out.println("Here id is " + id);
+			//System.out.println("Here id is " + id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {		//though we have only 1 record turning out, don't forget use while(rs.next()) to move the cursor
 								//to the beginning of the record we want!!!
@@ -192,7 +192,7 @@ public class Dao {
 		return flag;
 	}
 	
-	public static List<Vehicle> getVehicleByCusid(int cusid) {
+	public static List<Vehicle> getVehicleListByCusid(int cusid) {
 		con = ConnectionManager.getConnection();
 		List<Vehicle> vlist = new ArrayList<Vehicle>();
 		try {
@@ -233,7 +233,8 @@ public class Dao {
 			ps.setInt(5, v.getYear());
 			ps.setString(6, v.getPicture());
 			ps.setDouble(7, v.getAmount());
-			ps.setInt(8, v.getCusid());
+			ps.setInt(8, cusid);
+			//System.out.println("Here v.getCusid() is " + v.getCusid());
 			int val = ps.executeUpdate();
 			if (val > 0) {
 				flag = true;
