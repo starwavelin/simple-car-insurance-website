@@ -41,21 +41,37 @@ public class UpdateCustomerServlet extends HttpServlet {
 			c.setPhone(request.getParameter("phone"));
 			c.setEmail(request.getParameter("email"));
 			c.setAAA(request.getParameter("aaa"));
-			boolean inserted = Dao.insert(c);
-			List<Customer> clist = Dao.showCustomerList();
+			boolean inserted = Dao.insertCustomer(c);
+			List<Customer> clist = Dao.getCustomerList();
 			session.setAttribute("clist", clist);
-			//response.sendRedirect("admin.jsp" + "?inserted=" + inserted); Test Use
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin.jsp"
-					+ "?inserted=" + inserted);
+			//response.sendRedirect("admin.jsp" + "?inserted=" + inserted); // Debug Use
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin.jsp");
 			requestDispatcher.forward(request, response);
 		} else if (request.getParameter("btn").equals("Edit")) {
-			
+			Customer c = new Customer();
+			c.setID(Integer.parseInt(request.getParameter("id_ed")));
+			c.setFirstname(request.getParameter("firstname_ed"));
+			c.setLastname(request.getParameter("lastname_ed"));
+			c.setPolicyNo(request.getParameter("policyno_ed"));
+			c.setPhone(request.getParameter("phone_ed"));
+			c.setEmail(request.getParameter("email_ed"));
+			c.setAAA(request.getParameter("aaa_ed"));
+			boolean edited = Dao.editCustomer(c);
+			List<Customer> clist = Dao.getCustomerList();
+			session.setAttribute("clist", clist);
+			//response.sendRedirect("admin.jsp" + "?edited=" + edited);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin.jsp");
+			requestDispatcher.forward(request, response);
 		} else if (request.getParameter("btn").equals("Delete")) {
-			
+			int id = Integer.parseInt(request.getParameter("id_del"));
+			boolean deleted = Dao.deleteCustomer(id);
+			List<Customer> clist = Dao.getCustomerList();
+			session.setAttribute("clist", clist);
+			//response.sendRedirect("admin.jsp" + "?deleted=" + deleted);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin.jsp");
+			requestDispatcher.forward(request, response);
 		} else {
 			response.sendRedirect("error.jsp");
 		}
-		
 	}
-
 }

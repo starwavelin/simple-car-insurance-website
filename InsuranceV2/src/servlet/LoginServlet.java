@@ -22,42 +22,40 @@ import dao.Dao;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public LoginServlet() {
-    	super();
-    }
+	public LoginServlet() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			User user = new User();
-			user.setUsername(request.getParameter("username"));
-			user.setPassword(request.getParameter("password"));
-			
-			user = Dao.login(user);
-			if (user.isValid()) {
-				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
-				
-				//Show Customer List
-				List<Customer> clist = Dao.showCustomerList();
-				session.setAttribute("clist", clist);
-				
-				
-				RequestDispatcher requestDispatcher = 
-						request.getRequestDispatcher("admin.jsp" + 
-								"?username=" + user.getUsername());
-				requestDispatcher.forward(request, response);
-			} else {
-				RequestDispatcher requestDispatcher = 
-						request.getRequestDispatcher("errorLogin.jsp");
-				requestDispatcher.forward(request, response);
-			}
-		} catch (Exception e) {
-			System.out.println("Error is " + e);
-		}
-	}
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
+		User user = new User();
+		user.setUsername(request.getParameter("username"));
+		user.setPassword(request.getParameter("password"));
+
+		user = Dao.login(user);
+		if (user.isValid()) {
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+
+			// get Customer List
+			List<Customer> clist = Dao.getCustomerList();
+			session.setAttribute("clist", clist);
+
+			RequestDispatcher requestDispatcher = request
+					.getRequestDispatcher("admin.jsp" + "?username="
+							+ user.getUsername());
+			requestDispatcher.forward(request, response);
+		} else {
+			RequestDispatcher requestDispatcher = request
+					.getRequestDispatcher("errorLogin.jsp");
+			requestDispatcher.forward(request, response);
+		}
+
+	}
 }

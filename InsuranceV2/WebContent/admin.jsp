@@ -94,20 +94,20 @@
 				make sure the customer ID is an existed one. **
 				</td></tr>
 				<tr>
-					<td><input type="text" name="id"></td>
-					<td><input type="text" name="firstname"></td>
-					<td><input type="text" name="lastname"></td>
-					<td><input type="text" name="policyno"></td>
-					<td><input type="text" name="phone"></td>
-					<td><input type="text" name="email"></td>
-					<td><input type="text" name="aaa"></td>
+					<td><input type="text" name="id_ed"></td>
+					<td><input type="text" name="firstname_ed"></td>
+					<td><input type="text" name="lastname_ed"></td>
+					<td><input type="text" name="policyno_ed"></td>
+					<td><input type="text" name="phone_ed"></td>
+					<td><input type="text" name="email_ed"></td>
+					<td><input type="text" name="aaa_ed"></td>
 					<td><input type="submit" name="btn" value="Edit"></td>
 				</tr>
 			</table>
 			
 			<h3>Delete Customer</h3>
 			Please input an ID of a customer to be removed: 
-			<input type="text" name="id">
+			<input type="text" name="id_del">
 			<input type="submit" name="btn" value="Delete"> 
 			</form>
 			
