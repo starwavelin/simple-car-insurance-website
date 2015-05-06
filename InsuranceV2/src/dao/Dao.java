@@ -67,6 +67,33 @@ public class Dao {
 		return cList;
 	}
 	
+	public static Customer getCustomerByID(int id) {
+		con = ConnectionManager.getConnection();
+		Customer c = new Customer();
+		try {
+			String sql = "select * from customer where id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			System.out.println("Here id is " + id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {		//though we have only 1 record turning out, don't forget use while(rs.next()) to move the cursor
+								//to the beginning of the record we want!!!
+				c.setID(rs.getInt("id"));
+				c.setFirstname(rs.getString("firstname"));
+				c.setLastname(rs.getString("lastname"));
+				c.setPolicyNo(rs.getString("policyno"));
+				c.setPhone(rs.getString("phone"));
+				c.setEmail(rs.getString("email"));
+				c.setAAA(rs.getString("aaa"));
+			}
+			ps.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return c;
+	}
+	
 	/*public static int getID() {
 		con = ConnectionManager.getConnection();
 		int id = 0;

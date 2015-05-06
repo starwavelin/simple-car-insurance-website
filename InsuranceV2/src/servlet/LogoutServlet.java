@@ -30,6 +30,11 @@ public class LogoutServlet extends HttpServlet {
 			return;
 		}
 		session.removeAttribute("user");
+		
+		session.removeAttribute("clist");
+		//session.removeAttribute("cus");
+		//session.removeAttribute("vlist");
+		
 		session.invalidate();
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}

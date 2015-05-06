@@ -113,7 +113,7 @@
 			
 			
 			<h3>View A Customer's Vehicles by Customer ID</h3>
-			<form method="post" action="ShowVehiclesServlet">
+			<form method="post" action="ShowVehicleServlet">
 			Please input an ID of a customer to view
 			his/her vehicles: <input type="text" name="id">
 			<input type="submit" name="btn" value="Show Vehicles">
