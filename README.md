@@ -31,3 +31,6 @@ Functions:
   3. Edit Customer Details
   4. Add new vehicle for a customer
   5. Edit vehilce information
+
+V2: Built on /Insurance, adding Login Logout feature to it. <br>
+V3: Built on /InsuranceV2, using Ajax to take user input into servlets, and adding JavaScript constraints to significant input fields.  
