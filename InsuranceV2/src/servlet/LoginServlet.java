@@ -1,7 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Customer;
 import bean.User;
 import dao.Dao;
 
@@ -29,8 +32,6 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			
-			
 			User user = new User();
 			user.setUsername(request.getParameter("username"));
 			user.setPassword(request.getParameter("password"));
@@ -39,9 +40,20 @@ public class LoginServlet extends HttpServlet {
 			if (user.isValid()) {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
-				response.sendRedirect("admin.jsp?username=" + user.getUsername());
+				
+				//Show Customer List
+				List<Customer> clist = Dao.showCustomerList();
+				session.setAttribute("clist", clist);
+				
+				
+				RequestDispatcher requestDispatcher = 
+						request.getRequestDispatcher("admin.jsp" + 
+								"?username=" + user.getUsername());
+				requestDispatcher.forward(request, response);
 			} else {
-				response.sendRedirect("errorLogin.jsp");
+				RequestDispatcher requestDispatcher = 
+						request.getRequestDispatcher("errorLogin.jsp");
+				requestDispatcher.forward(request, response);
 			}
 		} catch (Exception e) {
 			System.out.println("Error is " + e);

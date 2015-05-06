@@ -1,0 +1,8 @@
+@CHARSET "ISO-8859-1";
+talbe {
+	border: 1px solid black;
+	cellspacing: 5px
+}
+tr, th, td {
+	border: 1px solid black;
+}

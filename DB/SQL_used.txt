@@ -6,7 +6,8 @@ select * from admin where username = ? and password = ?
 
 select * from customer
 
-insert into customer (id, firstname, lastname, policyno, phone, email, aaa) values (default, ?, ?, ?, ?, ?, ?)
+insert into customer (firstname, lastname, policyno, phone, email, aaa) values (?, ?, ?, ?, ?, ?) 
+	/* we set id of customer to be auto-incremenmt*/
 
 update customer set firstname = ?, lastname = ?, policyno = ?, phone = ?, email = ?, aaa = ? where id = ?
 

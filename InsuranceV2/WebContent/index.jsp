@@ -13,7 +13,7 @@
 		<h3>Ben's Car Insurance Site | Login Page</h3>
 		<form id="loginForm" method="post" action="LoginServlet">
 			User name: <input type="text" id="username" name="username" />
-			Password: <input type="text" id="password" name="password" />
+			Password: <input type="password" id="password" name="password" />
 			<input type="submit" name="btn" value="Login" />
 		</form>
 		</div>
