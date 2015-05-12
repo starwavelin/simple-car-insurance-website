@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+table {
+	border: 1px solid black;
+}
+tr, th, td {
+	border: 1px solid black;
+	width: 100px
+}
