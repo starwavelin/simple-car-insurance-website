@@ -68,12 +68,12 @@
 				</td></tr>
 				<tr>
 					
-					<td><input type="text" id="firstname" name="firstname" value=""></td>
-					<td><input type="text" id="lastname" name="lastname" value=""></td>
-					<td><input type="text" id="policyno" name="policyno" value=""></td>
-					<td><input type="text" id="phone" name="phone" value=""></td>
-					<td><input type="text" id="email" name="email" value=""></td>
-					<td><input type="text" id="aaa" name="aaa" value=""></td>
+					<td><input type="text" name="firstname"></td>
+					<td><input type="text" name="lastname"></td>
+					<td><input type="text" name="policyno"></td>
+					<td><input type="text" name="phone"></td>
+					<td><input type="text" name="email"></td>
+					<td><input type="text" name="aaa"></td>
 					<td><input type="submit" name="btn" value="Add"></td>
 				</tr>
 			</table>
