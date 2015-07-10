@@ -33,9 +33,9 @@ Functions:
   6. Edit vehilce information
   7. Delete a vehicle
 
-Technology Used in Version 1 (/Insurance):
+Technology Used in Version 1 (/Insurance):<br>
   Front-end: JSP; Controller: Servlet; Database: MySQL.
 
 ####Enhanced Versions: <br>
-V2: Built on /Insurance, added Login-Logout feature for admins and JavaScript constraints to important input fields. <br>
-V3: Built on /InsuranceV2, using Ajax (jQuery) to take user input into servlets. 
+V2: Built on /Insurance, added a Login-Logout feature for admins and JavaScript constraints to do input field checking. <br>
+V3: Built on /InsuranceV2, using Ajax (jQuery) to pass user input and action (i.e. insert/update/delete customer or vehicle) data into servlets. 
