@@ -1,7 +1,7 @@
 SimpleCarInsuranceWeb
 =====================
 
-A simple car insurance website, containing customer and vehicle information only
+Description: This is a simple car insurance website, containing information for customers and vehicles owned by them.
 
 Customer
   1. First name
@@ -18,19 +18,24 @@ Vehicle
   4. Type
   5. Year of Make
   6. Picture
-  7. Amount
-
-Technology Used:
-  Front-end: JSP
-  Controller: Servlet
-  DB: MySQL
+  7. Amount insured
   
+Admin (start to exist since Version 2)
+  1. username
+  2. password
+
 Functions:
   1. List/Table view of all customers
-  2. Add New Customer
-  3. Edit Customer Details
-  4. Add new vehicle for a customer
-  5. Edit vehilce information
+  2. Add new customer
+  3. Edit customer details
+  4. Delete a customer
+  5. Add new vehicle for a customer
+  6. Edit vehilce information
+  7. Delete a vehicle
 
-V2: Built on /Insurance, adding Login Logout feature to it. <br>
-V3: Built on /InsuranceV2, using Ajax to take user input into servlets, and adding JavaScript constraints to significant input fields.  
+Technology Used in Version 1 (/Insurance):
+  Front-end: JSP; Controller: Servlet; Database: MySQL.
+
+####Enhanced Versions: <br>
+V2: Built on /Insurance, added Login-Logout feature for admins and JavaScript constraints to important input fields. <br>
+V3: Built on /InsuranceV2, using Ajax (jQuery) to take user input into servlets. 
