@@ -12,8 +12,8 @@ import java.sql.DriverManager;
 public class ConnectionManager {
 	
 	private final static String URL = "jdbc:mysql://localhost:3306/insurance";	
-	private final static String DB_USER = "root";	// Use YOUR_MYSQL_DB_USERNAME
-	private final static String DB_PSWD = "123123"; // Use YORU_MYSQL_DB_PASSWORD
+	private final static String DB_USER = "USE_YOUR_OWN_DB_USER";	
+	private final static String DB_PSWD = "USE_YOUR_OWN_DB_USER_PASSWORD"; 
 	
 	public static Connection getConnection() {
 		Connection con = null;
