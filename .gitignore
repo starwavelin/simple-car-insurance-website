@@ -1,4 +1,11 @@
 
 *.class
 Insurance/build
+Insurance/src/com/dao/ConnectionManager.java
+
 InsuranceV2/build
+InsuranceV2/src/common/IConstant.java
+
+V3/src/common/IConstant.java
+
+V4/src/main/java/com/starwavelin/config/IConstant.java
