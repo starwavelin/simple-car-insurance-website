@@ -35,7 +35,7 @@
 			<td>
 				<a href="editCustomer?id=${customer.id}">Edit</a>
 				&nbsp;&nbsp;&nbsp;
-				<a href="deleteCustomer?id={customer.id}">Delete</a>
+				<a href="deleteCustomer?id=${customer.id}">Delete</a>
 				&nbsp;&nbsp;&nbsp;
 				<a href="VehicleList?id={customer.id}">Show his/her vehicles</a>
 			</td>

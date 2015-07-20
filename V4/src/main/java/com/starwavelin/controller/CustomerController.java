@@ -52,11 +52,15 @@ public class CustomerController {
 	    return model;
 	}
 	
+	@RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
+	public ModelAndView deleteCustomer(HttpServletRequest request) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		customerDAO.delete(id);
+		return new ModelAndView("redirect:CustomerList");
+	}
 	
-//	@RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
-//	
-//	
-//	
+	
+	
 //	@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
 	
 }	
