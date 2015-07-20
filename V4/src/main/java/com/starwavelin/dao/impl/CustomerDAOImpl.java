@@ -25,14 +25,14 @@ public class CustomerDAOImpl implements CustomerDAO {
 			// update
 			String sql = "update customer set firstname = ?, "
 					+ "lastname = ?, policyno = ?, phone = ?, email = ?, aaa = ? where id = ?";
-			jdbcTemplate.update(sql, cus.getFirstname(), cus.getLastname(), cus.getPolicyNo(), cus.getPhone(),
-					cus.getEmail(), cus.getAAA(), cus.getID());
+			jdbcTemplate.update(sql, cus.getFirstname(), cus.getLastname(), cus.getPolicyno(), cus.getPhone(),
+					cus.getEmail(), cus.getAaa(), cus.getID());
 		} else {
 			// insert
 			String sql = "insert into customer (firstname, lastname, policyno, phone, email, aaa) "
 					+ "values (?, ?, ?, ?, ?, ?) ";
-			jdbcTemplate.update(sql, cus.getFirstname(), cus.getLastname(), cus.getPolicyNo(), cus.getPhone(),
-					cus.getEmail(), cus.getAAA());
+			jdbcTemplate.update(sql, cus.getFirstname(), cus.getLastname(), cus.getPolicyno(), cus.getPhone(),
+					cus.getEmail(), cus.getAaa());
 		}
 	}
 

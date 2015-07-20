@@ -9,10 +9,10 @@ public class Customer {
 	public int getID() { return id; }
 	public String getFirstname() { return firstname;}
 	public String getLastname() { return lastname;}
-	public String getPolicyNo() { return policyno;}
+	public String getPolicyno() { return policyno;}
 	public String getPhone() { return phone;}
 	public String getEmail() { return email;}
-	public String getAAA() { return aaa;}
+	public String getAaa() { return aaa;}
 	public int getCount() { return count; }
 	
 	public void setID(int id) {
