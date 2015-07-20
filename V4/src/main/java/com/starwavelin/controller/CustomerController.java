@@ -2,6 +2,8 @@ package com.starwavelin.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +41,22 @@ public class CustomerController {
 		model.setViewName("CustomerForm");
 		return model;
 	}
+	
+	@RequestMapping(value = "/editCustomer", method = RequestMethod.GET)
+	public ModelAndView editCustomer(HttpServletRequest request) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Customer cus = customerDAO.get(id);
+		ModelAndView model = new ModelAndView("CustomerForm");
+		model.addObject("customer", cus);
+	 
+	    return model;
+	}
+	
+	
+//	@RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
+//	
+//	
+//	
+//	@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
 	
 }	

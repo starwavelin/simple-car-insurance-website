@@ -21,12 +21,12 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public void saveOrUpdate(Customer cus) {
-		if (cus.getID() > 0) {
+		if (cus.getId() > 0) {
 			// update
 			String sql = "update customer set firstname = ?, "
 					+ "lastname = ?, policyno = ?, phone = ?, email = ?, aaa = ? where id = ?";
 			jdbcTemplate.update(sql, cus.getFirstname(), cus.getLastname(), cus.getPolicyno(), cus.getPhone(),
-					cus.getEmail(), cus.getAaa(), cus.getID());
+					cus.getEmail(), cus.getAaa(), cus.getId());
 		} else {
 			// insert
 			String sql = "insert into customer (firstname, lastname, policyno, phone, email, aaa) "

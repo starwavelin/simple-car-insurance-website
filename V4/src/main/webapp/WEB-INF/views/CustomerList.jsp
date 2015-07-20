@@ -33,7 +33,7 @@
 			<td>${customer.email}</td>
 			<td>${customer.aaa}</td>
 			<td>
-				<a href="editCustomer?id={customer.id}">Edit</a>
+				<a href="editCustomer?id=${customer.id}">Edit</a>
 				&nbsp;&nbsp;&nbsp;
 				<a href="deleteCustomer?id={customer.id}">Delete</a>
 				&nbsp;&nbsp;&nbsp;

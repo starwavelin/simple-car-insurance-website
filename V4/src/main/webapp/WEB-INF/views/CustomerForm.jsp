@@ -12,6 +12,7 @@
 		<h1>New/Edit Customer</h1>
 		<form:form action="saveCustomer" method="post" modelAttribute="customer">
 		<table>
+			<form:hidden path="id" />
 			<tr>
                 <td>First Name:</td>
                 <td><form:input path="firstname" /></td>
