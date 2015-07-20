@@ -19,7 +19,7 @@ select * from vehicle where cusid = ?
 
 insert into vehicle (vin, make, model, type, year, picture, amount, cusid) values (?, ?, ?, ?, ?, ?, ?, ?)
 
-update vehicle set make = ?, model = ?, type = ?, year = ?, picture = ?, amount = ? values (?, ?, ?, ?, ?, ?)
+update vehicle set make = ?, model = ?, type = ?, year = ?, picture = ?, amount = ?
 
 delete from vehicle where vin = ?
 
