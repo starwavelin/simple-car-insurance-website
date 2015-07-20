@@ -5,10 +5,9 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<div align="center">
+	<h2>Welcome to Ben's Car Insurance Site</h2>
+	<a href="CustomerList">Enter the Customer Listing Page</a>
+</div>
 </body>
 </html>
