@@ -32,8 +32,8 @@ public class CustomerController {
 		return "CustomerList";
 	}
 	
-	@RequestMapping(value = "/newCustomer", method = RequestMethod.GET)
-	public ModelAndView newCustomer(ModelAndView model) {
+	@RequestMapping(value = "/addCustomer", method = RequestMethod.GET)
+	public ModelAndView addCustomer(ModelAndView model) {
 		Customer customer = new Customer();
 		model.addObject("customer", customer);
 		model.setViewName("CustomerForm");

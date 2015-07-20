@@ -9,7 +9,9 @@
 <body>
 	<div align="center">
 		<h1>Customer List</h1>
-		<h3><a href="/newCustomer">Add New Customer</a></h3>
+		<h3><a href="addCustomer">Add New Customer</a></h3>	
+				<!-- Should set href as "addCustomer" rather than "/addCustomer";
+				if using "/addCustomer", it sets the root directory to "/addCustomer" -->
 		<table border="1">
 		<tr>
 			<th>ID</th>
@@ -31,11 +33,11 @@
 			<td>${customer.email}</td>
 			<td>${customer.aaa}</td>
 			<td>
-				<a href="/editCustomer?id={customer.id}">Edit</a>
+				<a href="editCustomer?id={customer.id}">Edit</a>
 				&nbsp;&nbsp;&nbsp;
-				<a href="/deleteCustomer?id={customer.id}">Delete</a>
+				<a href="deleteCustomer?id={customer.id}">Delete</a>
 				&nbsp;&nbsp;&nbsp;
-				<a href="/VehicleList?id={customer.id}">Show his/her vehicles</a>
+				<a href="VehicleList?id={customer.id}">Show his/her vehicles</a>
 			</td>
 		</tr>
 		</c:forEach>
