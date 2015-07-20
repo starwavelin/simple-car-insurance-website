@@ -25,10 +25,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "CustomerList", method = RequestMethod.GET)
-	public String gotoCustomerList(Model model) {
-		logger.info("Direct to CustomerList.jsp");
-		return "CustomerList";
-	}
+	
+	
 	
 }
