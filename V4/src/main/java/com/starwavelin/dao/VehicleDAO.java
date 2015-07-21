@@ -14,6 +14,6 @@ public interface VehicleDAO {
 	
 	Vehicle get(String vin);
 	
-	List<Vehicle> list();
+	List<Vehicle> list(int cusid);
 	
 }

@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.starwavelin.dao.CustomerDAO;
+import com.starwavelin.dao.VehicleDAO;
 import com.starwavelin.model.Customer;
 import com.starwavelin.dao.mapper.CustomerMapper;
 
@@ -14,9 +15,11 @@ import com.starwavelin.dao.mapper.CustomerMapper;
 public class CustomerDAOImpl implements CustomerDAO {
 
 	private JdbcTemplate jdbcTemplate;
+	private VehicleDAO vhcDAO;
 
 	public CustomerDAOImpl(DataSource datasource) {
 		jdbcTemplate = new JdbcTemplate(datasource);
+		vhcDAO = new VehicleDAOImpl(datasource);
 	}
 
 	@Override
@@ -38,7 +41,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public void delete(int id) {
-		//TODO: invoke VehicleDAOImpl's deleteVehicleByCusid(id); 
+		//invoke VehicleDAOImpl's deleteVehicleByCusid(id);
+		vhcDAO.deleteVehicleByCusid(id);
+		
 		String sql = "delete from customer where id = ?";
 		jdbcTemplate.update(sql, id);
 	}

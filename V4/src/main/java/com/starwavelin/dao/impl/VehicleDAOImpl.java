@@ -54,9 +54,9 @@ public class VehicleDAOImpl implements VehicleDAO {
 	}
 
 	@Override
-	public List<Vehicle> list() {
-		String sql = "select * from vehicle";
-		List<Vehicle> vhcList = jdbcTemplate.query(sql, new VehicleMapper());
+	public List<Vehicle> list(int cusid) {
+		String sql = "select * from vehicle where cusid = ?";
+		List<Vehicle> vhcList = jdbcTemplate.query(sql, new Object[]{cusid}, new VehicleMapper());
 		return vhcList;
 	}	
 }
