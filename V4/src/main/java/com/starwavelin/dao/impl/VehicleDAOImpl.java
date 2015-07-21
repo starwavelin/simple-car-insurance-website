@@ -27,6 +27,8 @@ public class VehicleDAOImpl implements VehicleDAO {
 	@Override
 	public void saveOrUpdate(Vehicle vhc) {
 		if (vhc.getVin() != null) {
+			logger.info("Inside VehicleDAOImpl - updateVehicle method");
+			
 			// update
 			String sql = "update vehicle set make = ?, model = ?, type = ?, year = ?, picture = ?, amount = ?"
 					+ " where vin = ?";

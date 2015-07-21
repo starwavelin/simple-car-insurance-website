@@ -33,7 +33,7 @@ public class VehicleController {
 		logger.info("cusid = " + cusid);
 		
 		List<Vehicle> vhcList = vehicleDAO.list(cusid);
-		logger.info("VIN of the first car in the list is " + vhcList.get(0).getVin());
+//		logger.info("VIN of the first car in the list is " + vhcList.get(0).getVin());
 		
 		model.addAttribute("vhcList", vhcList);
 		
@@ -44,24 +44,27 @@ public class VehicleController {
 	public ModelAndView addVehicle(ModelAndView model) {
 		Vehicle vehicle = new Vehicle();
 		model.addObject("vehicle", vehicle);
-		model.setViewName("VehicleForm");
+		model.setViewName("VehicleAddForm");
 		return model;
 	}
 	
 	@RequestMapping(value = "/editVehicle", method = RequestMethod.GET)
 	public ModelAndView editVehicle(ModelAndView model, HttpServletRequest request) {
 		String vin = request.getParameter("vin");
+		
 		Vehicle vehicle = vehicleDAO.get(vin);
 		model.addObject("vehicle", vehicle);
-		model.setViewName("VehicleForm");
+		model.setViewName("VehicleEditForm");
 		
 		return model;
 	}
 	
 	@RequestMapping(value = "/saveVehicle", method = RequestMethod.POST)
-	public ModelAndView saveVehicle(@ModelAttribute Vehicle vhc) {
+	public ModelAndView saveVehicle(@ModelAttribute Vehicle vhc, 
+			HttpServletRequest request) {
 		vehicleDAO.saveOrUpdate(vhc);
-		return new ModelAndView("redirect:VehicleList");
+		int cusid = Integer.parseInt(request.getParameter("cusid"));
+		return new ModelAndView("redirect:VehicleList?cusid=" + cusid);
 	}
 	
 	@RequestMapping(value = "/deleteVehicle", method = RequestMethod.GET)

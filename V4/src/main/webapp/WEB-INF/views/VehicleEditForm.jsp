@@ -5,18 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ben's Car Insurance | Add/Edit Vehicle</title>
+<title>Ben's Car Insurance | Edit Vehicle</title>
 </head>
 <body>
 	<div align="center">
 		<form:form action="saveVehicle" method="post" modelAttribute="vehicle">
-		<h1>Add/Edit Vehicle for Customer ID [<form:input path="cusid" width="2" />]</h1>
+		<h1>
+			Edit Vehicle for Vehicle VIN [<form:input path="vin" size="2" />]
+			of Customer ID [<form:input path="cusid" size="1" />]
+		</h1>
 		<label>*Note: do not change VIN if you are editing an vehicle info</label>
 		<table>
-			<tr>
-                <td>VIN:</td>
-                <td><form:input path="vin" /></td>
-            </tr>
             <tr>
                 <td>Make:</td>
                 <td><form:input path="make" /></td>
