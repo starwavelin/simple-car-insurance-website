@@ -9,12 +9,11 @@
 </head>
 <body>
 	<div align="center">
-		<form:form action="saveVehicle" method="post" modelAttribute="vehicle">
+		<form:form action="saveUpdateVehicle" method="post" modelAttribute="vehicle">
 		<h1>
 			Edit Vehicle for Vehicle VIN [<form:input path="vin" size="2" />]
 			of Customer ID [<form:input path="cusid" size="1" />]
 		</h1>
-		<label>*Note: do not change VIN if you are editing an vehicle info</label>
 		<table>
             <tr>
                 <td>Make:</td>

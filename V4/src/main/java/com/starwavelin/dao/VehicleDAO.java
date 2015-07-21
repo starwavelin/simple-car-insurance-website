@@ -6,7 +6,9 @@ import com.starwavelin.model.Vehicle;
 
 public interface VehicleDAO {
 	
-	void saveOrUpdate(Vehicle vhc);
+	void saveInsert(Vehicle vhc);
+	
+	void saveUpdate(Vehicle vhc);
 	
 	void delete(String vin);
 	

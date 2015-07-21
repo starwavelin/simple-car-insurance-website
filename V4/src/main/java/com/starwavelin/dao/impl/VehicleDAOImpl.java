@@ -17,32 +17,34 @@ import com.starwavelin.model.Vehicle;
 public class VehicleDAOImpl implements VehicleDAO {
 
 	private JdbcTemplate jdbcTemplate;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(VehicleDAOImpl.class);
-	
+
 	public VehicleDAOImpl(DataSource ds) {
 		jdbcTemplate = new JdbcTemplate(ds);
 	}
-	
+
 	@Override
-	public void saveOrUpdate(Vehicle vhc) {
-		if (vhc.getVin() != null) {
-			logger.info("Inside VehicleDAOImpl - updateVehicle method");
-			
-			// update
-			String sql = "update vehicle set make = ?, model = ?, type = ?, year = ?, picture = ?, amount = ?"
-					+ " where vin = ?";
-			jdbcTemplate.update(sql, vhc.getMake(), vhc.getModel(), vhc.getType(),
-					vhc.getYear(), vhc.getPicture(), vhc.getAmount(), vhc.getVin()) ;
-		} else {
-			logger.debug("Inside VehicleDAOImpl - addVehicle method");
-			
-			// insert
-			String sql = "insert into vehicle (vin, make, model, type, year, picture, amount, cusid) "
-					+ "values (?, ?, ?, ?, ?, ?, ?, ?)";
-			jdbcTemplate.update(sql, vhc.getVin(), vhc.getMake(), vhc.getModel(), vhc.getType(),
-					vhc.getYear(), vhc.getPicture(), vhc.getAmount(), vhc.getCusid());
-		}
+	public void saveInsert(Vehicle vhc) {
+		logger.debug("Inside VehicleDAOImpl - addVehicle method");
+
+		// insert
+		String sql = "insert into vehicle (vin, make, model, type, year, picture, amount, cusid) "
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, vhc.getVin(), vhc.getMake(), vhc.getModel(), 
+				vhc.getType(), vhc.getYear(),
+				vhc.getPicture(), vhc.getAmount(), vhc.getCusid());
+
+	}
+
+	@Override
+	public void saveUpdate(Vehicle vhc) {
+		logger.info("Inside VehicleDAOImpl - updateVehicle method");
+
+		String sql = "update vehicle set make = ?, model = ?, type = ?, year = ?, "
+				+ "picture = ?, amount = ? where vin = ?";
+		jdbcTemplate.update(sql, vhc.getMake(), vhc.getModel(), vhc.getType(), vhc.getYear(), vhc.getPicture(),
+				vhc.getAmount(), vhc.getVin());
 	}
 
 	@Override
@@ -55,24 +57,24 @@ public class VehicleDAOImpl implements VehicleDAO {
 	public void deleteVehicleByCusid(int cusid) {
 		String sql = "delete from vehicle where cusid = ?";
 		jdbcTemplate.update(sql, cusid);
-	}	
-	
+	}
+
 	@Override
 	public Vehicle get(String vin) {
 		String sql = "select * from vehicle where vin = ?";
-		Vehicle vhc = jdbcTemplate.queryForObject(sql, new Object[]{vin}, new VehicleMapper());
+		Vehicle vhc = jdbcTemplate.queryForObject(sql, new Object[] { vin }, new VehicleMapper());
 		return vhc;
 	}
 
 	@Override
 	public List<Vehicle> list(int cusid) throws DataAccessException {
 		logger.info("Inside Class VehicleDAOImpl, function list(int cusid)");
-		
+
 		/* DEBUG: To avoid null point exception, i don't use ? for this sql. */
-//		String sql = "select * from vehicle where cusid = " + cusid;  
-		
+		// String sql = "select * from vehicle where cusid = " + cusid;
+
 		String sql = "select * from vehicle where cusid = ?";
-		List<Vehicle> vhcList = jdbcTemplate.query(sql, new Object[]{cusid}, new VehicleMapper());
+		List<Vehicle> vhcList = jdbcTemplate.query(sql, new Object[] { cusid }, new VehicleMapper());
 		return vhcList;
-	}	
+	}
 }

@@ -9,8 +9,10 @@
 </head>
 <body>
 	<div align="center">
-		<form:form action="saveVehicle" method="post" modelAttribute="vehicle">
-		<h1>Add Vehicle for Customer ID [<form:input path="cusid" size="1" />]</h1>
+		<form:form action="saveInsertVehicle" method="post" modelAttribute="vehicle">
+		<h1>Add Vehicle for Customer ID 
+			[<input name="cusid" value="<%=request.getParameter("cusid") %>" size="1" readonly/>]
+		</h1>
 		<table>
 			<tr>
                 <td>VIN:</td>

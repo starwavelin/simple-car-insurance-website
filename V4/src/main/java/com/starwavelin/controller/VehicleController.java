@@ -42,9 +42,11 @@ public class VehicleController {
 	
 	@RequestMapping(value = "/addVehicle", method = RequestMethod.GET)
 	public ModelAndView addVehicle(ModelAndView model) {
+		
 		Vehicle vehicle = new Vehicle();
 		model.addObject("vehicle", vehicle);
 		model.setViewName("VehicleAddForm");
+		
 		return model;
 	}
 	
@@ -59,13 +61,28 @@ public class VehicleController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/saveVehicle", method = RequestMethod.POST)
-	public ModelAndView saveVehicle(@ModelAttribute Vehicle vhc, 
+	
+	
+	@RequestMapping(value = "/saveInsertVehicle", method = RequestMethod.POST)
+	public ModelAndView saveInsert(@ModelAttribute Vehicle vhc, 
 			HttpServletRequest request) {
-		vehicleDAO.saveOrUpdate(vhc);
+		
+		vehicleDAO.saveInsert(vhc);
 		int cusid = Integer.parseInt(request.getParameter("cusid"));
 		return new ModelAndView("redirect:VehicleList?cusid=" + cusid);
 	}
+	
+	
+	@RequestMapping(value = "/saveUpdateVehicle", method = RequestMethod.POST)
+	public ModelAndView saveUpdate(@ModelAttribute Vehicle vhc, 
+			HttpServletRequest request) {
+		
+		vehicleDAO.saveUpdate(vhc);
+		int cusid = Integer.parseInt(request.getParameter("cusid"));
+		return new ModelAndView("redirect:VehicleList?cusid=" + cusid);
+	}
+	
+	
 	
 	@RequestMapping(value = "/deleteVehicle", method = RequestMethod.GET)
 	public ModelAndView deleteVehicle(HttpServletRequest request) {

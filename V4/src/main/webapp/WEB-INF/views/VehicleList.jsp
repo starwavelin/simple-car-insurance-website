@@ -9,7 +9,7 @@
 <body>
 	<div align="center">
 		<h1>Vehicle List</h1>
-		<h3><a href="addVehicle">Add New Vehicle</a></h3>	
+		<h3><a href="addVehicle?cusid=<%=request.getParameter("cusid") %>">Add New Vehicle</a></h3>	
 		<table border="1">
 		<tr>
 			<th>ID</th>
