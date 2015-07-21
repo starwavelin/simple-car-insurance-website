@@ -35,6 +35,8 @@ public class VehicleDAOImpl implements VehicleDAO {
 			jdbcTemplate.update(sql, vhc.getMake(), vhc.getModel(), vhc.getType(),
 					vhc.getYear(), vhc.getPicture(), vhc.getAmount(), vhc.getVin()) ;
 		} else {
+			logger.debug("Inside VehicleDAOImpl - addVehicle method");
+			
 			// insert
 			String sql = "insert into vehicle (vin, make, model, type, year, picture, amount, cusid) "
 					+ "values (?, ?, ?, ?, ?, ?, ?, ?)";

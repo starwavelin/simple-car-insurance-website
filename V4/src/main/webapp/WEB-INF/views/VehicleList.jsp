@@ -35,7 +35,7 @@
 			<td>	
 				<a href="editVehicle?vin=${vehicle.vin}">Edit</a>
 				&nbsp;&nbsp;&nbsp;
-				<a href="deleteVehicle?vin=${vehicle.vin}">Delete</a>
+				<a href="deleteVehicle?vin=${vehicle.vin}&cusid=${vehicle.cusid}">Delete</a>
 			</td>
 		</tr>
 		</c:forEach>

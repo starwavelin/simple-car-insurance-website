@@ -70,7 +70,12 @@ public class VehicleController {
 	@RequestMapping(value = "/deleteVehicle", method = RequestMethod.GET)
 	public ModelAndView deleteVehicle(HttpServletRequest request) {
 		String vin = request.getParameter("vin");
+		logger.info("DEBUG: /deleteVehicle vin is " + vin);
+		
+		int cusid = Integer.parseInt(request.getParameter("cusid"));
+		logger.info("DEBUG: /deleteVehicle cusid is " + cusid);
+		
 		vehicleDAO.delete(vin);
-		return new ModelAndView("redirect:VehicleList");
+		return new ModelAndView("redirect:VehicleList?cusid=" + cusid);
 	}
 }

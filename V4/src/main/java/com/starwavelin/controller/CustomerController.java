@@ -27,7 +27,7 @@ public class CustomerController {
 	
 	@RequestMapping(value = "/CustomerList", method = RequestMethod.GET)
 	public String gotoCustomerList(Model model) {
-		logger.info("Direct to CustomerList.jsp");
+//		logger.info("Direct to CustomerList.jsp");
 		
 		List<Customer> cusList = customerDAO.list();
 		model.addAttribute("cusList", cusList);				
