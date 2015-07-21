@@ -15,11 +15,11 @@ import com.starwavelin.dao.mapper.CustomerMapper;
 public class CustomerDAOImpl implements CustomerDAO {
 
 	private JdbcTemplate jdbcTemplate;
-//	private VehicleDAO vhcDAO;
+	private VehicleDAO vhcDAO;
 
 	public CustomerDAOImpl(DataSource datasource) {
 		jdbcTemplate = new JdbcTemplate(datasource);
-//		vhcDAO = new VehicleDAOImpl(datasource);
+		vhcDAO = new VehicleDAOImpl(datasource);
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Override
 	public void delete(int id) {
 		//invoke VehicleDAOImpl's deleteVehicleByCusid(id);
-//		vhcDAO.deleteVehicleByCusid(id);
+		vhcDAO.deleteVehicleByCusid(id);
 		
 		String sql = "delete from customer where id = ?";
 		jdbcTemplate.update(sql, id);
