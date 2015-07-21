@@ -29,8 +29,12 @@ public class VehicleController {
 	public String gotoVehicleList(Model model, HttpServletRequest request) {
 		logger.info("Direct to VehicleList.jsp");
 		
-		int cusid = Integer.parseInt(request.getParameter("id"));
+		int cusid = Integer.parseInt(request.getParameter("cusid"));
+		logger.info("cusid = " + cusid);
+		
 		List<Vehicle> vhcList = vehicleDAO.list(cusid);
+		logger.info("VIN of the first car in the list is " + vhcList.get(0).getVin());
+		
 		model.addAttribute("vhcList", vhcList);
 		
 		return "VehicleList";

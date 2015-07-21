@@ -13,7 +13,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.starwavelin.dao.CustomerDAO;
+import com.starwavelin.dao.VehicleDAO;
 import com.starwavelin.dao.impl.CustomerDAOImpl;
+import com.starwavelin.dao.impl.VehicleDAOImpl;
 
 @Configuration
 @ComponentScan(basePackages = "com.starwavelin")
@@ -45,5 +47,16 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public CustomerDAO getCustomerDAO() {
 		return new CustomerDAOImpl(getDataSource());
+	}
+	
+	/*
+	 * If forgetting to add Bean for VehicleDAO, 
+	 * I will encounter bug
+	 * "Error creating bean with name 'vehicleController': Injection of autowired dependencies failed; "
+	 *  
+	 * */
+	@Bean 
+	public VehicleDAO getVehicleDAO() {
+		return new VehicleDAOImpl(getDataSource());
 	}
 }

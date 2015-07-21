@@ -37,7 +37,7 @@
 				&nbsp;&nbsp;&nbsp;
 				<a href="deleteCustomer?id=${customer.id}">Delete</a>
 				&nbsp;&nbsp;&nbsp;
-				<a href="VehicleList?id=${customer.id}">Show his/her vehicles</a>
+				<a href="VehicleList?cusid=${customer.id}">Show his/her vehicles</a>
 			</td>
 		</tr>
 		</c:forEach>
