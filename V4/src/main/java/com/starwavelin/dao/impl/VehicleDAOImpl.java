@@ -64,19 +64,11 @@ public class VehicleDAOImpl implements VehicleDAO {
 	public List<Vehicle> list(int cusid) throws DataAccessException {
 		logger.info("Inside Class VehicleDAOImpl, function list(int cusid)");
 		
-		/* 
-		String sql = "select * from vehicle where cusid = ?";
-		*/
-		/* The following statement will NOT work!
-		List<Vehicle> vhcList = jdbcTemplate.query(sql, new Object[]{cusid}, new VehicleMapper());
-		*/
-		
-		/* To avoid null point exception, i don't use ? for this sql. */
+		/* DEBUG: To avoid null point exception, i don't use ? for this sql. */
 //		String sql = "select * from vehicle where cusid = " + cusid;  
 		
-		String sql = "select * from vehicle where cusid = 1";
-		
-		List<Vehicle> vhcList = jdbcTemplate.query(sql, new VehicleMapper());
+		String sql = "select * from vehicle where cusid = ?";
+		List<Vehicle> vhcList = jdbcTemplate.query(sql, new Object[]{cusid}, new VehicleMapper());
 		return vhcList;
 	}	
 }
