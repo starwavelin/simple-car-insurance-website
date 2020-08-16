@@ -1,4 +1,4 @@
-SimpleCarInsuranceWeb
+simple-car-insurance-website
 =====================
 
 Description: This is a simple car insurance website, containing information for customers and vehicles owned by them.
@@ -36,8 +36,8 @@ Functions:
 Technology Used in Version 1 (/Insurance):<br>
   Front-end: JSP; Controller: Servlet; Database: MySQL.
 
-####Enhanced Versions: <br>
-V2: Built on /Insurance, added a Login-Logout feature for admins and JavaScript constraints to do input field checking. <br>
-V3: Built on /InsuranceV2, using Ajax (jQuery) to pass user input and action (i.e. insert/update/delete customer or vehicle) data into servlets. <br>
-V4: Built on /InsuranceV2. Rewrote this website as a Spring MVC project, using Spring + JDBC framework. The development tool used was STS. <br>
+#### Enhanced Versions: <br>
 V5: Built on /V4. Rewrote it using Spring framwork again but Hibernate as the data access mechanism. The development tool used was STS. <br>
+V4: Built on /InsuranceV2. Rewrote this website as a Spring MVC project, using Spring + JDBC framework. The development tool used was STS. <br>
+V3: Built on /InsuranceV2, using Ajax (jQuery) to pass user input and action (i.e. insert/update/delete customer or vehicle) data into servlets. <br>
+V2: Built on /Insurance, added a Login-Logout feature for admins and JavaScript constraints to do input field checking. <br>
